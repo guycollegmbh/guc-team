@@ -1,0 +1,246 @@
+/* ==========================================================================
+   GUC Team Members – Admin Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Metabox
+   -------------------------------------------------------------------------- */
+.guc-team-metabox {
+  padding: 0.5rem 0;
+}
+
+.guc-team-row {
+  margin-bottom: 1.25rem;
+}
+
+.guc-team-row--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.guc-team-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 13px;
+}
+
+.guc-team-field .required {
+  color: #d63638;
+}
+
+.guc-team-field input[type="text"],
+.guc-team-field input[type="email"],
+.guc-team-field textarea {
+  width: 100%;
+}
+
+.guc-team-field textarea {
+  resize: vertical;
+}
+
+/* Photo Upload */
+.guc-team-photo-upload {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.guc-team-photo-preview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.guc-team-photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.guc-team-photo-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Sorting Page
+   -------------------------------------------------------------------------- */
+.guc-sorting-wrap {
+  max-width: 900px;
+}
+
+.guc-sorting-wrap .description {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Tabs nav */
+.guc-sorting-tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid #c3c4c7;
+  background: none;
+}
+
+.guc-sorting-tab-nav li {
+  margin: 0;
+  padding: 0;
+}
+
+.guc-sorting-tab-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  text-decoration: none;
+  color: #555;
+  font-size: 13px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-bottom: -1px;
+  border-radius: 3px 3px 0 0;
+}
+
+.guc-sorting-tab-nav a:hover {
+  color: #1d2327;
+  background: #f6f7f7;
+}
+
+.guc-sorting-tab-nav a.active {
+  color: #1d2327;
+  background: #fff;
+  border-color: #c3c4c7;
+  font-weight: 600;
+}
+
+.guc-member-count {
+  color: #999;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* Tab panels */
+.guc-sorting-tab-panel {
+  display: none;
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  border-top: none;
+  padding: 1.25rem;
+}
+
+.guc-sorting-tab-panel.active {
+  display: block;
+}
+
+/* Sortable list */
+.guc-sortable-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.guc-sortable-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 4px;
+  border-radius: 3px;
+  cursor: default;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+.guc-sortable-item:last-child {
+  margin-bottom: 0;
+}
+
+.guc-sortable-ghost {
+  opacity: 0.4;
+  background: #e8f0fe;
+}
+
+.guc-sortable-chosen {
+  background: #f0f6ff;
+  border-color: #aac;
+}
+
+.guc-drag-handle {
+  cursor: grab;
+  color: #aaa;
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.guc-drag-handle:active {
+  cursor: grabbing;
+}
+
+.guc-member-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #e0e0e0;
+}
+
+.guc-member-thumb--placeholder {
+  display: inline-block;
+  background: #ddd;
+}
+
+.guc-member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.guc-member-info strong {
+  font-size: 13px;
+}
+
+.guc-member-function {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Save actions */
+.guc-sorting-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.guc-save-feedback {
+  font-size: 13px;
+  padding: 0.25rem 0;
+}
+
+.guc-save-feedback--success {
+  color: #2e7d32;
+}
+
+.guc-save-feedback--error {
+  color: #d32f2f;
+}

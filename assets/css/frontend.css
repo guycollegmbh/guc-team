@@ -1,0 +1,411 @@
+/* ==========================================================================
+   GUC Team Members – Frontend Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Filter Navigation
+   -------------------------------------------------------------------------- */
+.guc-team-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.guc-team-filter__btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.guc-team-filter__btn:hover {
+  color: #000;
+}
+
+.guc-team-filter__btn.is-active {
+  color: #c0392b; /* red accent – adjust to brand colour */
+  border-bottom-color: currentColor;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Groups (show / hide)
+   -------------------------------------------------------------------------- */
+.guc-team-group {
+  display: none;
+}
+
+.guc-team-group.is-active {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Grid
+   -------------------------------------------------------------------------- */
+.guc-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem 2rem;
+}
+
+@media (max-width: 1024px) {
+  .guc-team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .guc-team-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Card
+   -------------------------------------------------------------------------- */
+.guc-team-card {
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+}
+
+.guc-team-card:focus-visible .guc-team-card__photo-wrap {
+  box-shadow: 0 0 0 3px #c0392b;
+}
+
+.guc-team-card__photo-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 aspect ratio */
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f0f0f0;
+  margin-bottom: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.guc-team-card:hover .guc-team-card__photo-wrap {
+  opacity: 0.85;
+}
+
+.guc-team-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Placeholder when no photo */
+.guc-team-card__photo-placeholder {
+  position: absolute;
+  inset: 0;
+  background: #ddd url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23aaa' d='M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z'/%3E%3C/svg%3E") center/50% no-repeat;
+}
+
+.guc-team-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.guc-team-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  display: block;
+}
+
+.guc-team-card__function {
+  font-size: 0.875rem;
+  color: #666;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Modal
+   -------------------------------------------------------------------------- */
+.guc-team-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guc-team-modal[hidden] {
+  display: none;
+}
+
+.guc-team-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+}
+
+.guc-team-modal__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 1rem;
+  z-index: 1;
+}
+
+/* Prevent body scroll when modal is open */
+body.guc-modal-open {
+  overflow: hidden;
+}
+
+/* Close button */
+.guc-team-modal__close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  z-index: 2;
+}
+
+.guc-team-modal__close:hover {
+  opacity: 1;
+}
+
+/* Nav buttons (prev / next) */
+.guc-team-modal__nav {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.75rem;
+  min-width: 100px;
+  text-align: center;
+  transition: opacity 0.2s;
+  opacity: 0.8;
+}
+
+.guc-team-modal__nav:hover:not(:disabled) {
+  opacity: 1;
+}
+
+.guc-team-modal__nav:disabled {
+  visibility: hidden;
+}
+
+.guc-team-modal__nav--prev {
+  flex-direction: row;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.guc-team-modal__nav--next {
+  flex-direction: row-reverse;
+  text-align: right;
+  gap: 0.5rem;
+}
+
+.guc-team-modal__nav-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.guc-team-modal__nav-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: block;
+}
+
+.guc-team-modal__nav-function {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  display: block;
+}
+
+/* Main content box */
+.guc-team-modal__content {
+  flex: 1;
+  display: flex;
+  gap: 2.5rem;
+  background: #fff;
+  border-radius: 2px;
+  padding: 2.5rem;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.guc-team-modal__photo {
+  flex: 0 0 260px;
+}
+
+.guc-team-modal__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.guc-team-modal__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.guc-team-modal__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: #111;
+}
+
+.guc-team-modal__function {
+  font-size: 1.375rem;
+  color: #444;
+  margin: 0 0 1.75rem;
+  font-weight: 400;
+}
+
+.guc-team-modal__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 1.5rem;
+}
+
+.guc-team-modal__contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #333;
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e8e8e8;
+  transition: color 0.2s;
+}
+
+.guc-team-modal__contact-link:first-child {
+  border-top: 1px solid #e8e8e8;
+}
+
+.guc-team-modal__contact-link:hover {
+  color: #c0392b;
+}
+
+.guc-team-modal__description {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #444;
+  margin-top: 1rem;
+}
+
+/* Mobile modal adjustments */
+@media (max-width: 768px) {
+  /*
+   * Layout on mobile (bottom sheet):
+   *
+   *  ┌──────────────────────────────┐  ← nav row (transparent, above white box)
+   *  │  ‹ Prev Name  |  Next Name › │
+   *  ├──────────────────────────────┤
+   *  │                              │  ← white content box
+   *  │  [photo]  Name / Function    │
+   *  │  Phone / Email / Description │
+   *  └──────────────────────────────┘
+   *
+   * DOM order: close | nav--prev | content | nav--next
+   * We use flex-wrap + CSS order to put both nav buttons in one row above content.
+   */
+
+  .guc-team-modal__container {
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* Close stays absolutely positioned, top-right of viewport */
+  .guc-team-modal__close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    color: #fff;
+  }
+
+  /* Both nav buttons share a single row above the content box */
+  .guc-team-modal__nav--prev {
+    order: 1;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    color: #fff;
+    opacity: 1;
+    min-width: 0;
+  }
+
+  .guc-team-modal__nav--next {
+    order: 2;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0.75rem 1rem 0.75rem 0.75rem;
+    color: #fff;
+    opacity: 1;
+    min-width: 0;
+  }
+
+  /* Truncate long names so they don't overflow */
+  .guc-team-modal__nav-preview {
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .guc-team-modal__nav-name,
+  .guc-team-modal__nav-function {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  /* Content takes the full row below the nav buttons */
+  .guc-team-modal__content {
+    order: 3;
+    flex: 0 0 100%;
+    flex-direction: column;
+    padding: 1.5rem;
+    max-height: 75vh;
+    border-radius: 8px 8px 0 0;
+    gap: 1.25rem;
+    overflow-y: auto;
+  }
+
+  .guc-team-modal__photo {
+    flex: 0 0 auto;
+    width: 160px;
+    margin: 0 auto;
+  }
+}
