@@ -7,6 +7,7 @@ class GUC_Team_CPT {
 
 	public static function init() {
 		add_action( 'init', [ self::class, 'register' ] );
+		add_action( 'admin_head', [ self::class, 'menu_icon_styles' ] );
 		add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 );
 		add_filter( 'manage_team_member_posts_columns', [ self::class, 'admin_columns' ] );
 		add_action( 'manage_team_member_posts_custom_column', [ self::class, 'admin_column_content' ], 10, 2 );
@@ -106,5 +107,26 @@ class GUC_Team_CPT {
 				}
 				break;
 		}
+	}
+
+	/**
+	 * Remove WordPress's automatic CSS colour filter on the menu icon
+	 * so the original SVG colours are preserved.
+	 */
+	public static function menu_icon_styles() {
+		?>
+		<style>
+			#adminmenu .menu-icon-team_member div.wp-menu-image:before {
+				filter: none !important;
+				opacity: 1 !important;
+				background-size: 20px 20px !important;
+			}
+			#adminmenu li.menu-icon-team_member:hover div.wp-menu-image:before,
+			#adminmenu li.menu-icon-team_member.wp-has-current-submenu div.wp-menu-image:before {
+				filter: none !important;
+				opacity: 1 !important;
+			}
+		</style>
+		<?php
 	}
 }
