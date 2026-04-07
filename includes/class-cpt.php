@@ -116,6 +116,7 @@ add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 )
 				height: 24px !important;
 				width: auto !important;
 				opacity: 1 !important;
+				padding: 5px 0 0 0 !important;
 			}
 		</style>
 		<?php
