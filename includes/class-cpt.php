@@ -7,6 +7,7 @@ class GUC_Team_CPT {
 
 	public static function init() {
 		add_action( 'init', [ self::class, 'register' ] );
+		add_action( 'admin_head', [ self::class, 'menu_icon_styles' ] );
 add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 );
 		add_filter( 'manage_team_member_posts_columns', [ self::class, 'admin_columns' ] );
 		add_action( 'manage_team_member_posts_custom_column', [ self::class, 'admin_column_content' ], 10, 2 );
@@ -108,5 +109,20 @@ add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 )
 		}
 	}
 
-
+	public static function menu_icon_styles() {
+		?>
+		<style>
+			#adminmenu .menu-icon-team_member div.wp-menu-image {
+				background-size: 20px 20px !important;
+				opacity: 1 !important;
+			}
+			#adminmenu .menu-icon-team_member div.wp-menu-image:before {
+				opacity: 1 !important;
+			}
+			#adminmenu li.menu-icon-team_member a {
+				opacity: 1 !important;
+			}
+		</style>
+		<?php
+	}
 }
