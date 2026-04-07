@@ -49,12 +49,12 @@ class GUC_Team_Metabox {
 
 			<div class="guc-team-row guc-team-row--half">
 				<div class="guc-team-field">
-					<label for="guc_first_name"><?php esc_html_e( 'First Name', 'guc-team' ); ?> <span class="required">*</span></label>
+					<label for="guc_first_name"><?php esc_html_e( 'Vorname', 'guc-team' ); ?> <span class="required">*</span></label>
 					<input type="text" id="guc_first_name" name="guc_first_name"
 						   value="<?php echo esc_attr( $first_name ); ?>" required>
 				</div>
 				<div class="guc-team-field">
-					<label for="guc_last_name"><?php esc_html_e( 'Last Name', 'guc-team' ); ?> <span class="required">*</span></label>
+					<label for="guc_last_name"><?php esc_html_e( 'Nachname', 'guc-team' ); ?> <span class="required">*</span></label>
 					<input type="text" id="guc_last_name" name="guc_last_name"
 						   value="<?php echo esc_attr( $last_name ); ?>" required>
 				</div>
@@ -62,16 +62,16 @@ class GUC_Team_Metabox {
 
 			<div class="guc-team-row">
 				<div class="guc-team-field">
-					<label for="guc_function"><?php esc_html_e( 'Function / Title', 'guc-team' ); ?></label>
+					<label for="guc_function"><?php esc_html_e( 'Funktion/Titel', 'guc-team' ); ?></label>
 					<input type="text" id="guc_function" name="guc_function"
 						   value="<?php echo esc_attr( $function ); ?>"
-						   placeholder="<?php esc_attr_e( 'e.g. Head of Marketing', 'guc-team' ); ?>">
+						   placeholder="<?php esc_attr_e( 'z.B. Leiter Marketing', 'guc-team' ); ?>">
 				</div>
 			</div>
 
 			<div class="guc-team-row guc-team-row--half">
 				<div class="guc-team-field">
-					<label for="guc_phone"><?php esc_html_e( 'Phone', 'guc-team' ); ?></label>
+					<label for="guc_phone"><?php esc_html_e( 'Telefonnummer', 'guc-team' ); ?></label>
 					<input type="text" id="guc_phone" name="guc_phone"
 						   value="<?php echo esc_attr( $phone ); ?>"
 						   placeholder="+41 71 000 00 00">
@@ -85,14 +85,14 @@ class GUC_Team_Metabox {
 
 			<div class="guc-team-row">
 				<div class="guc-team-field">
-					<label for="guc_description"><?php esc_html_e( 'Description', 'guc-team' ); ?></label>
+					<label for="guc_description"><?php esc_html_e( 'Beschreibung', 'guc-team' ); ?></label>
 					<textarea id="guc_description" name="guc_description" rows="5"><?php echo esc_textarea( $description ); ?></textarea>
 				</div>
 			</div>
 
 			<div class="guc-team-row">
 				<div class="guc-team-field">
-					<label><?php esc_html_e( 'Profile Photo', 'guc-team' ); ?></label>
+					<label><?php esc_html_e( 'Bild', 'guc-team' ); ?></label>
 					<div class="guc-team-photo-upload">
 						<div class="guc-team-photo-preview" id="guc_photo_preview">
 							<?php if ( $photo_url ) : ?>
@@ -103,11 +103,11 @@ class GUC_Team_Metabox {
 							   value="<?php echo esc_attr( $photo_id ?: '' ); ?>">
 						<div class="guc-team-photo-actions">
 							<button type="button" class="button" id="guc_upload_photo">
-								<?php esc_html_e( 'Select Photo', 'guc-team' ); ?>
+								<?php esc_html_e( 'Bild auswählen', 'guc-team' ); ?>
 							</button>
 							<button type="button" class="button" id="guc_remove_photo"
 								<?php echo ! $photo_id ? 'style="display:none"' : ''; ?>>
-								<?php esc_html_e( 'Remove Photo', 'guc-team' ); ?>
+								<?php esc_html_e( 'Bild entfernen', 'guc-team' ); ?>
 							</button>
 						</div>
 					</div>
@@ -123,8 +123,8 @@ class GUC_Team_Metabox {
 				e.preventDefault();
 				if (frame) { frame.open(); return; }
 				frame = wp.media({
-					title: '<?php echo esc_js( __( 'Select Profile Photo', 'guc-team' ) ); ?>',
-					button: { text: '<?php echo esc_js( __( 'Use this photo', 'guc-team' ) ); ?>' },
+					title: '<?php echo esc_js( __( 'Bild auswählen', 'guc-team' ) ); ?>',
+					button: { text: '<?php echo esc_js( __( 'Dieses Bild verwenden', 'guc-team' ) ); ?>' },
 					multiple: false,
 					library: { type: 'image' }
 				});

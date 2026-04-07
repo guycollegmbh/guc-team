@@ -69,10 +69,10 @@ class GUC_Team_CPT {
 		$new = [];
 		foreach ( $columns as $key => $label ) {
 			if ( $key === 'title' ) {
-				$new['team_photo']    = __( 'Photo', 'guc-team' );
+				$new['team_photo']    = __( 'Bild', 'guc-team' );
 				$new['team_name']     = __( 'Name', 'guc-team' );
-				$new['team_function'] = __( 'Function', 'guc-team' );
-				$new['team_cats']     = __( 'Categories', 'guc-team' );
+				$new['team_function'] = __( 'Funktion/Titel', 'guc-team' );
+				$new['team_cats']     = __( 'Kategorien', 'guc-team' );
 			} elseif ( $key === 'date' ) {
 				// skip date
 			} else {
