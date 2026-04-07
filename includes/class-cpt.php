@@ -31,7 +31,7 @@ class GUC_Team_CPT {
 			'public'       => false,
 			'show_ui'      => true,
 			'show_in_menu' => true,
-			'menu_icon'    => 'dashicons-groups',
+			'menu_icon'    => 'data:image/svg+xml;base64,' . base64_encode( file_get_contents( GUC_TEAM_PATH . 'assets/images/icon.svg' ) ),
 			'supports'     => [ 'thumbnail' ], // only featured image; all other fields are meta
 			'has_archive'  => false,
 			'rewrite'      => false,

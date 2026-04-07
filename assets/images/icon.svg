@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect id="Artboard1" x="0" y="0" width="100" height="100" style="fill:none;"/>
+    <g id="Artboard11" serif:id="Artboard1">
+        <g>
+            <path d="M100,50C100,77.615 77.614,100 50,100C22.385,100 0,77.615 0,50C0,22.386 22.385,0 50,0C77.614,0 100,22.386 100,50Z" style="fill:rgb(0,174,239);fill-rule:nonzero;"/>
+            <rect x="17.485" y="66.924" width="15.57" height="15.57" style="fill:rgb(35,31,32);fill-rule:nonzero;"/>
+            <rect x="17.485" y="17.489" width="65.029" height="13.511" style="fill:white;"/>
+            <rect x="69" y="17.489" width="13.514" height="65.022" style="fill:white;"/>
+            <rect x="38.755" y="69" width="43.759" height="13.469" style="fill:white;"/>
+            <rect x="17.485" y="17.489" width="13.45" height="43.777" style="fill:white;"/>
+        </g>
+        <g transform="matrix(0.058523,0,0,0.058523,49.9995,50)">
+            <g transform="matrix(1,0,0,1,-320,-320)">
+                <path d="M560,224C560,277 517,320 464,320C411,320 368,277 368,224C368,171 411,128 464,128C517,128 560,171 560,224ZM385.5,391.3C408,376.6 435,368 464,368C543.5,368 608,432.5 608,512L608,534.4C608,557.4 589.4,576 566.4,576L421.6,576C428.2,563.5 432,549.2 432,534L432,528C432,476.5 414.6,429.1 385.5,391.3Z" style="fill-opacity:0.4;fill-rule:nonzero;"/>
+                <path d="M208,304C269.9,304 320,253.9 320,192C320,130.1 269.9,80 208,80C146.1,80 96,130.1 96,192C96,253.9 146.1,304 208,304ZM208,352C110.8,352 32,430.8 32,528L32,534C32,557.2 50.8,576 74,576L342,576C365.2,576 384,557.2 384,534L384,528C384,430.8 305.2,352 208,352Z" style="fill-rule:nonzero;"/>
+            </g>
+        </g>
+    </g>
+</svg>
