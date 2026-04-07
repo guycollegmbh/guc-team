@@ -112,14 +112,9 @@ add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 )
 	public static function menu_icon_styles() {
 		?>
 		<style>
-			#adminmenu .menu-icon-team_member div.wp-menu-image {
-				background-size: 20px 20px !important;
-				opacity: 1 !important;
-			}
-			#adminmenu .menu-icon-team_member div.wp-menu-image:before {
-				opacity: 1 !important;
-			}
-			#adminmenu li.menu-icon-team_member a {
+			#adminmenu .menu-icon-team_member div.wp-menu-image img {
+				height: 24px !important;
+				width: auto !important;
 				opacity: 1 !important;
 			}
 		</style>
