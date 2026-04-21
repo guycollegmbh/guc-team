@@ -259,30 +259,14 @@
     }
 
     // Prev nav.
-    var prevBtn  = modal.querySelector('.guc-team-modal__nav--prev');
-    var prevMember = idx > 0 ? memberMap[group.members[idx - 1]] : null;
-    if (prevMember) {
-      prevBtn.querySelector('.guc-team-modal__nav-name').textContent     = prevMember.fullName;
-      prevBtn.querySelector('.guc-team-modal__nav-function').textContent = prevMember.function || '';
-      prevBtn.disabled = false;
-      prevBtn.style.visibility = '';
-    } else {
-      prevBtn.disabled = true;
-      prevBtn.style.visibility = 'hidden';
-    }
+    var prevBtn = modal.querySelector('.guc-team-modal__nav--prev');
+    prevBtn.disabled         = idx <= 0;
+    prevBtn.style.visibility = idx <= 0 ? 'hidden' : '';
 
     // Next nav.
-    var nextBtn    = modal.querySelector('.guc-team-modal__nav--next');
-    var nextMember = idx < group.members.length - 1 ? memberMap[group.members[idx + 1]] : null;
-    if (nextMember) {
-      nextBtn.querySelector('.guc-team-modal__nav-name').textContent     = nextMember.fullName;
-      nextBtn.querySelector('.guc-team-modal__nav-function').textContent = nextMember.function || '';
-      nextBtn.disabled = false;
-      nextBtn.style.visibility = '';
-    } else {
-      nextBtn.disabled = true;
-      nextBtn.style.visibility = 'hidden';
-    }
+    var nextBtn = modal.querySelector('.guc-team-modal__nav--next');
+    nextBtn.disabled         = idx >= group.members.length - 1;
+    nextBtn.style.visibility = idx >= group.members.length - 1 ? 'hidden' : '';
   }
 
 })();

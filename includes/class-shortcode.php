@@ -165,13 +165,9 @@ class GUC_Team_Shortcode {
 				</button>
 
 				<button class="guc-team-modal__nav guc-team-modal__nav--prev" aria-label="<?php esc_attr_e( 'Previous member', 'guc-team' ); ?>">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
 						<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/>
 					</svg>
-					<span class="guc-team-modal__nav-preview">
-						<strong class="guc-team-modal__nav-name"></strong>
-						<span class="guc-team-modal__nav-function"></span>
-					</span>
 				</button>
 
 				<div class="guc-team-modal__content">
@@ -200,11 +196,7 @@ class GUC_Team_Shortcode {
 				</div>
 
 				<button class="guc-team-modal__nav guc-team-modal__nav--next" aria-label="<?php esc_attr_e( 'Next member', 'guc-team' ); ?>">
-					<span class="guc-team-modal__nav-preview">
-						<strong class="guc-team-modal__nav-name"></strong>
-						<span class="guc-team-modal__nav-function"></span>
-					</span>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
 						<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/>
 					</svg>
 				</button>

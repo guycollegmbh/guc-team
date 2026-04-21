@@ -3,7 +3,7 @@
  * Plugin Name: GUC Team Members
  * Plugin URI:  https://github.com/guycollegmbh/guc-team
  * Description: Team member management with category filtering, custom per-category sorting, and lightbox modal.
- * Version:     1.0.10
+ * Version:     1.1.0
  * Author:      GUC Team
  * Text Domain: guc-team
  * License:     GPL-2.0+
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GUC_TEAM_VERSION', '1.0.10' );
+define( 'GUC_TEAM_VERSION', '1.1.0' );
 define( 'GUC_TEAM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'GUC_TEAM_URL', plugin_dir_url( __FILE__ ) );
 

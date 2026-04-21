@@ -193,20 +193,17 @@ body.guc-modal-open {
 
 /* Nav buttons (prev / next) */
 .guc-team-modal__nav {
-  flex: 0 0 120px;
+  flex: 0 0 60px;
   background: none;
   border: none;
   color: #fff;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0.5rem;
-  text-align: center;
+  justify-content: center;
+  padding: 0.5rem;
   transition: opacity 0.2s;
-  opacity: 0.8;
-  overflow: hidden;
+  opacity: 0.7;
 }
 
 .guc-team-modal__nav:hover:not(:disabled) {
@@ -215,36 +212,6 @@ body.guc-modal-open {
 
 .guc-team-modal__nav:disabled {
   visibility: hidden;
-}
-
-.guc-team-modal__nav--prev {
-  flex-direction: row;
-  text-align: left;
-  gap: 0.5rem;
-}
-
-.guc-team-modal__nav--next {
-  flex-direction: row-reverse;
-  text-align: right;
-  gap: 0.5rem;
-}
-
-.guc-team-modal__nav-preview {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.guc-team-modal__nav-name {
-  font-size: 0.875rem;
-  font-weight: 600;
-  display: block;
-}
-
-.guc-team-modal__nav-function {
-  font-size: 0.75rem;
-  opacity: 0.75;
-  display: block;
 }
 
 /* Main content box */
@@ -362,34 +329,18 @@ body.guc-modal-open {
     order: 1;
     flex: 0 0 50%;
     max-width: 50%;
-    padding: 0.75rem 0.75rem 0.75rem 1rem;
-    color: #fff;
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
     opacity: 1;
-    min-width: 0;
   }
 
   .guc-team-modal__nav--next {
     order: 2;
     flex: 0 0 50%;
     max-width: 50%;
-    padding: 0.75rem 1rem 0.75rem 0.75rem;
-    color: #fff;
+    justify-content: flex-end;
+    padding: 0.75rem 1rem;
     opacity: 1;
-    min-width: 0;
-  }
-
-  /* Truncate long names so they don't overflow */
-  .guc-team-modal__nav-preview {
-    overflow: hidden;
-    min-width: 0;
-  }
-
-  .guc-team-modal__nav-name,
-  .guc-team-modal__nav-function {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
   }
 
   /* Content takes the full row below the nav buttons */
