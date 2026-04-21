@@ -8,7 +8,8 @@ class GUC_Team_CPT {
 	public static function init() {
 		add_action( 'init', [ self::class, 'register' ] );
 		add_action( 'admin_head', [ self::class, 'menu_icon_styles' ] );
-add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 );
+		add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 );
+		add_action( 'admin_notices', [ self::class, 'shortcode_notice' ] );
 		add_filter( 'manage_team_member_posts_columns', [ self::class, 'admin_columns' ] );
 		add_action( 'manage_team_member_posts_custom_column', [ self::class, 'admin_column_content' ], 10, 2 );
 	}
@@ -107,6 +108,19 @@ add_action( 'save_post_team_member', [ self::class, 'sync_post_title' ], 20, 2 )
 				}
 				break;
 		}
+	}
+
+	public static function shortcode_notice() {
+		$screen = get_current_screen();
+		if ( ! $screen || $screen->id !== 'edit-team_member' ) {
+			return;
+		}
+		?>
+		<div class="notice notice-info" style="display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;">
+			<span><?php esc_html_e( 'Shortcode zum Einbinden des Team-Listings:', 'guc-team' ); ?></span>
+			<code style="font-size:14px;background:#f0f0f1;padding:0.25rem 0.6rem;border-radius:3px;user-select:all;">[team_members]</code>
+		</div>
+		<?php
 	}
 
 	public static function menu_icon_styles() {
