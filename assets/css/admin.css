@@ -89,11 +89,11 @@
 .guc-sorting-tab-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
-  margin: 0 0 0;
-  padding: 0;
+  gap: 0.25rem 0.25rem;
+  margin: 0 0 1.25rem;
+  padding: 0 0 0.75rem;
   list-style: none;
-  border-bottom: 1px solid #c3c4c7;
+  border-bottom: 2px solid #c3c4c7;
   background: none;
 }
 
@@ -106,19 +106,17 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.6rem 1.1rem;
+  padding: 0.4rem 1rem;
   text-decoration: none;
   color: #555;
   font-size: 13px;
+  border-radius: 3px;
   border: 1px solid transparent;
-  border-bottom: none;
-  margin-bottom: -1px;
-  border-radius: 3px 3px 0 0;
 }
 
 .guc-sorting-tab-nav a:hover {
   color: #1d2327;
-  background: #f6f7f7;
+  background: #f0f0f1;
 }
 
 .guc-sorting-tab-nav a.active {
@@ -139,7 +137,6 @@
   display: none;
   background: #fff;
   border: 1px solid #c3c4c7;
-  border-top: none;
   padding: 1.25rem;
 }
 
