@@ -8,17 +8,16 @@
 .guc-team-filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
+  justify-content: center;
+  gap: 1.75rem;
   margin-bottom: 3rem;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .guc-team-filter__btn {
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  padding: 0.5rem 1.25rem;
+  padding: 0;
   font-size: 1rem;
   color: #555;
   cursor: pointer;
