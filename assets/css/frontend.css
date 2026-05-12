@@ -32,7 +32,6 @@
 .guc-team-filter__btn.is-active {
   color: #c0392b; /* red accent – adjust to brand colour */
   border-bottom-color: currentColor;
-  font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
