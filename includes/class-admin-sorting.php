@@ -125,7 +125,7 @@ class GUC_Team_Admin_Sorting {
 		// Build tabs: first tab is "All".
 		$tabs = [ (object) [
 			'slug'    => 'all',
-			'name'    => __( 'All', 'guc-team' ),
+			'name'    => GUC_Team_Settings::get_filter_all_label(),
 			'members' => self::sort_members( 'all', $all_members ),
 		] ];
 

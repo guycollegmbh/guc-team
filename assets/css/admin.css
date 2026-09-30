@@ -241,3 +241,25 @@
 .guc-save-feedback--error {
   color: #d32f2f;
 }
+
+/* --------------------------------------------------------------------------
+   Settings Page
+   -------------------------------------------------------------------------- */
+.guc-shortcode-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guc-copy-feedback {
+  font-size: 13px;
+}
+
+.guc-copy-feedback--success {
+  color: #2e7d32;
+}
+
+.guc-copy-feedback--error {
+  color: #d32f2f;
+}

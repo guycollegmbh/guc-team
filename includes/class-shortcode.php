@@ -82,7 +82,7 @@ class GUC_Team_Shortcode {
 		$all_sorted = GUC_Team_Admin_Sorting::sort_members( 'all', $all_ids );
 		$groups[]   = [
 			'slug'    => 'all',
-			'label'   => __( 'All', 'guc-team' ),
+			'label'   => GUC_Team_Settings::get_filter_all_label(),
 			'members' => $all_sorted,
 		];
 
