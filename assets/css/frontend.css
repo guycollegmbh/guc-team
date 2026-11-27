@@ -289,6 +289,53 @@ body.guc-modal-open {
   margin-top: 1rem;
 }
 
+/* Formatted content from the description editor */
+.guc-team-modal__description p,
+.guc-team-modal__description ul,
+.guc-team-modal__description ol {
+  margin: 0 0 0.75em;
+}
+
+.guc-team-modal__description ul,
+.guc-team-modal__description ol {
+  padding-left: 1.25em;
+}
+
+.guc-team-modal__description ul {
+  list-style: disc;
+}
+
+.guc-team-modal__description ol {
+  list-style: decimal;
+}
+
+.guc-team-modal__description li {
+  margin: 0;
+}
+
+.guc-team-modal__description li > ul,
+.guc-team-modal__description li > ol {
+  margin-bottom: 0;
+}
+
+.guc-team-modal__description > :last-child {
+  margin-bottom: 0;
+}
+
+.guc-team-modal__description strong,
+.guc-team-modal__description b {
+  font-weight: 700;
+}
+
+.guc-team-modal__description a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.guc-team-modal__description a:hover {
+  color: #c0392b;
+}
+
 /* Mobile modal adjustments */
 @media (max-width: 768px) {
   /*

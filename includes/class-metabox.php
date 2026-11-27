@@ -86,7 +86,20 @@ class GUC_Team_Metabox {
 			<div class="guc-team-row">
 				<div class="guc-team-field">
 					<label for="guc_description"><?php esc_html_e( 'Beschreibung', 'guc-team' ); ?></label>
-					<textarea id="guc_description" name="guc_description" rows="5"><?php echo esc_textarea( $description ); ?></textarea>
+					<?php
+					// Reduced editor: only formatting that fits the modal layout.
+					wp_editor( $description, 'guc_description', [
+						'textarea_name' => 'guc_description',
+						'textarea_rows' => 8,
+						'media_buttons' => false,
+						'teeny'         => true,
+						'tinymce'       => [
+							'toolbar1' => 'bold,italic,bullist,numlist,link,unlink,undo,redo',
+							'toolbar2' => '',
+						],
+						'quicktags'     => [ 'buttons' => 'strong,em,ul,ol,li,link' ],
+					] );
+					?>
 				</div>
 			</div>
 

@@ -62,7 +62,8 @@ class GUC_Team_Shortcode {
 				'function'    => $function,
 				'phone'       => $phone,
 				'email'       => $email,
-				'description' => $description,
+				// The editor stores paragraphs without <p> tags, wpautop() restores them.
+				'description' => $description ? wpautop( $description ) : '',
 				'photoGrid'   => $photo_grid,
 				'photoModal'  => $photo_modal,
 				'categories'  => $term_slugs,
