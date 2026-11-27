@@ -14,7 +14,7 @@ class GUC_Team_Metabox {
 	public static function register() {
 		add_meta_box(
 			'guc_team_details',
-			__( 'Team Member Details', 'guc-team' ),
+			__( 'Angaben zum Teammitglied', 'guc-team' ),
 			[ self::class, 'render' ],
 			'team_member',
 			'normal',

@@ -9,8 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="guc-team-wrapper" id="<?php echo esc_attr( $wrapper_id ); ?>" data-instance="<?php echo esc_attr( $instance ); ?>">
 
-	<!-- Filter Navigation -->
-	<nav class="guc-team-filter" role="tablist" aria-label="<?php esc_attr_e( 'Filter team members by category', 'guc-team' ); ?>">
+	<!-- Filter Navigation (hidden if only one group, e.g. category="slug") -->
+	<?php if ( count( $groups ) > 1 ) : ?>
+	<nav class="guc-team-filter" role="tablist" aria-label="<?php esc_attr_e( 'Teammitglieder nach Kategorie filtern', 'guc-team' ); ?>">
 		<?php foreach ( $groups as $i => $group ) : ?>
 			<button
 				class="guc-team-filter__btn<?php echo $i === 0 ? ' is-active' : ''; ?>"
@@ -23,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</button>
 		<?php endforeach; ?>
 	</nav>
+	<?php endif; ?>
 
 	<!-- Member Groups (one per category, shown/hidden by JS) -->
 	<div class="guc-team-groups">

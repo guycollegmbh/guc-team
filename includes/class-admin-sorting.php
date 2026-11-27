@@ -16,8 +16,8 @@ class GUC_Team_Admin_Sorting {
 	public static function add_menu() {
 		add_submenu_page(
 			'edit.php?post_type=team_member',
-			__( 'Sort Members', 'guc-team' ),
-			__( 'Sort Members', 'guc-team' ),
+			__( 'Mitglieder sortieren', 'guc-team' ),
+			__( 'Mitglieder sortieren', 'guc-team' ),
 			'edit_posts',
 			'guc-team-sorting',
 			[ self::class, 'render_page' ]
@@ -46,9 +46,10 @@ class GUC_Team_Admin_Sorting {
 		wp_localize_script( 'guc-team-admin-sorting', 'gucTeamSorting', [
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'guc_team_order' ),
-			'saved'   => __( 'Order saved!', 'guc-team' ),
-			'saving'  => __( 'Saving…', 'guc-team' ),
-			'error'   => __( 'Error saving order. Please try again.', 'guc-team' ),
+			'save'    => __( 'Reihenfolge speichern', 'guc-team' ),
+			'saved'   => __( 'Reihenfolge gespeichert!', 'guc-team' ),
+			'saving'  => __( 'Speichern…', 'guc-team' ),
+			'error'   => __( 'Fehler beim Speichern der Reihenfolge. Bitte erneut versuchen.', 'guc-team' ),
 		] );
 		wp_enqueue_style( 'guc-team-admin', GUC_TEAM_URL . 'assets/css/admin.css', [], GUC_TEAM_VERSION );
 	}
@@ -144,14 +145,14 @@ class GUC_Team_Admin_Sorting {
 		}
 		?>
 		<div class="wrap guc-sorting-wrap">
-			<h1><?php esc_html_e( 'Sort Team Members', 'guc-team' ); ?></h1>
+			<h1><?php esc_html_e( 'Teammitglieder sortieren', 'guc-team' ); ?></h1>
 			<p class="description">
-				<?php esc_html_e( 'Drag and drop to set the display order for each category. Each category has its own independent order.', 'guc-team' ); ?>
+				<?php esc_html_e( 'Per Drag-and-drop die Reihenfolge pro Kategorie festlegen. Jede Kategorie hat ihre eigene Reihenfolge.', 'guc-team' ); ?>
 			</p>
 
 			<?php if ( empty( $all_members ) ) : ?>
 				<div class="notice notice-warning inline">
-					<p><?php esc_html_e( 'No published team members found. Add some team members first.', 'guc-team' ); ?></p>
+					<p><?php esc_html_e( 'Keine veröffentlichten Teammitglieder gefunden. Bitte zuerst Teammitglieder erfassen.', 'guc-team' ); ?></p>
 				</div>
 			<?php else : ?>
 
@@ -198,7 +199,7 @@ class GUC_Team_Admin_Sorting {
 						<div class="guc-sorting-actions">
 							<button type="button" class="button button-primary guc-save-order"
 									data-category="<?php echo esc_attr( $tab->slug ); ?>">
-								<?php esc_html_e( 'Save Order', 'guc-team' ); ?>
+								<?php esc_html_e( 'Reihenfolge speichern', 'guc-team' ); ?>
 							</button>
 							<span class="guc-save-feedback" style="display:none"></span>
 						</div>
@@ -215,12 +216,12 @@ class GUC_Team_Admin_Sorting {
 		check_ajax_referer( 'guc_team_order', 'nonce' );
 
 		if ( ! current_user_can( 'edit_posts' ) ) {
-			wp_send_json_error( [ 'message' => __( 'Permission denied.', 'guc-team' ) ] );
+			wp_send_json_error( [ 'message' => __( 'Keine Berechtigung.', 'guc-team' ) ] );
 		}
 
 		$category = isset( $_POST['category'] ) ? sanitize_key( $_POST['category'] ) : '';
 		if ( ! $category ) {
-			wp_send_json_error( [ 'message' => __( 'Invalid category.', 'guc-team' ) ] );
+			wp_send_json_error( [ 'message' => __( 'Ungültige Kategorie.', 'guc-team' ) ] );
 		}
 
 		$order = isset( $_POST['order'] ) ? (array) $_POST['order'] : [];
@@ -229,6 +230,6 @@ class GUC_Team_Admin_Sorting {
 
 		update_option( self::OPTION_PREFIX . $category, array_values( $order ), false );
 
-		wp_send_json_success( [ 'message' => __( 'Order saved!', 'guc-team' ) ] );
+		wp_send_json_success( [ 'message' => __( 'Reihenfolge gespeichert!', 'guc-team' ) ] );
 	}
 }

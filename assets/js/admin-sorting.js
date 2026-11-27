@@ -81,16 +81,17 @@
         })
           .then(function (res) { return res.json(); })
           .then(function (json) {
-            btn.disabled    = false;
-            btn.textContent = gucTeamSorting.saved;
-            setTimeout(function () {
-              btn.textContent = 'Save Order';
-            }, 2000);
+            btn.disabled = false;
 
             if (json.success) {
+              btn.textContent = gucTeamSorting.saved;
+              setTimeout(function () {
+                btn.textContent = gucTeamSorting.save;
+              }, 2000);
               feedback.textContent  = gucTeamSorting.saved;
               feedback.className    = 'guc-save-feedback guc-save-feedback--success';
             } else {
+              btn.textContent       = gucTeamSorting.save;
               feedback.textContent  = json.data && json.data.message ? json.data.message : gucTeamSorting.error;
               feedback.className    = 'guc-save-feedback guc-save-feedback--error';
             }
@@ -98,7 +99,7 @@
           })
           .catch(function () {
             btn.disabled    = false;
-            btn.textContent = 'Save Order';
+            btn.textContent = gucTeamSorting.save;
             feedback.textContent  = gucTeamSorting.error;
             feedback.className    = 'guc-save-feedback guc-save-feedback--error';
             feedback.style.display = 'inline-block';

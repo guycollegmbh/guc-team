@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GUC Team Members
  * Plugin URI:  https://guycolle.com
- * Description: Team member management with category filtering, custom per-category sorting, and lightbox modal.
+ * Description: Verwaltung von Teammitgliedern mit Kategorie-Filter, eigener Sortierung pro Kategorie und Lightbox.
  * Version:     1.3.0
  * Author:      GUC Team
  * Text Domain: guc-team

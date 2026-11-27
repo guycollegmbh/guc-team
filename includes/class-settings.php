@@ -51,13 +51,13 @@ class GUC_Team_Settings {
 	public static function get_filter_all_label() {
 		$label = (string) self::get( 'filter_all_label' );
 
-		return $label !== '' ? $label : __( 'All', 'guc-team' );
+		return $label !== '' ? $label : __( 'Alle', 'guc-team' );
 	}
 
 	public static function add_menu() {
 		add_submenu_page(
 			'edit.php?post_type=team_member',
-			__( 'Team Members – Einstellungen', 'guc-team' ),
+			__( 'Teammitglieder – Einstellungen', 'guc-team' ),
 			__( 'Einstellungen', 'guc-team' ),
 			self::CAPABILITY,
 			self::PAGE_SLUG,
@@ -80,15 +80,15 @@ class GUC_Team_Settings {
 
 		add_settings_field(
 			'filter_all_label',
-			__( 'Filter-Label «All»', 'guc-team' ),
+			__( 'Filter-Label «Alle»', 'guc-team' ),
 			[ self::class, 'render_text_field' ],
 			self::PAGE_SLUG,
 			'guc_team_section_filter',
 			[
 				'key'         => 'filter_all_label',
 				'label_for'   => 'guc_team_filter_all_label',
-				'placeholder' => __( 'All', 'guc-team' ),
-				'description' => __( 'Text des Filter-Buttons, der alle Team Members anzeigt. Leer lassen, um den Standardtext «All» zu verwenden.', 'guc-team' ),
+				'placeholder' => __( 'Alle', 'guc-team' ),
+				'description' => __( 'Text des Filter-Buttons, der alle Teammitglieder anzeigt. Leer lassen, um den Standardtext «Alle» zu verwenden.', 'guc-team' ),
 			]
 		);
 	}
@@ -125,7 +125,7 @@ class GUC_Team_Settings {
 	public static function render_page() {
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Team Members – Einstellungen', 'guc-team' ); ?></h1>
+			<h1><?php esc_html_e( 'Teammitglieder – Einstellungen', 'guc-team' ); ?></h1>
 
 			<?php settings_errors(); ?>
 
@@ -146,6 +146,11 @@ class GUC_Team_Settings {
 						</div>
 						<p class="description">
 							<?php esc_html_e( 'Diesen Shortcode auf einer Seite oder in einem Beitrag einfügen, um das Team-Listing auszugeben.', 'guc-team' ); ?>
+						</p>
+						<p class="description guc-shortcode-hint">
+							<?php esc_html_e( 'Nur eine oder mehrere Kategorien anzeigen (Slug der Kategorie):', 'guc-team' ); ?>
+							<code>[team_members category="slug"]</code>
+							<code>[team_members category="slug1,slug2"]</code>
 						</p>
 					</td>
 				</tr>

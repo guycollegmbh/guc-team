@@ -16,16 +16,16 @@ class GUC_Team_CPT {
 
 	public static function register() {
 		$labels = [
-			'name'               => __( 'Team Members', 'guc-team' ),
-			'singular_name'      => __( 'Team Member', 'guc-team' ),
-			'add_new'            => __( 'Add New', 'guc-team' ),
-			'add_new_item'       => __( 'Add New Team Member', 'guc-team' ),
-			'edit_item'          => __( 'Edit Team Member', 'guc-team' ),
-			'new_item'           => __( 'New Team Member', 'guc-team' ),
-			'search_items'       => __( 'Search Team Members', 'guc-team' ),
-			'not_found'          => __( 'No team members found.', 'guc-team' ),
-			'not_found_in_trash' => __( 'No team members found in trash.', 'guc-team' ),
-			'menu_name'          => __( 'Team Members', 'guc-team' ),
+			'name'               => __( 'Teammitglieder', 'guc-team' ),
+			'singular_name'      => __( 'Teammitglied', 'guc-team' ),
+			'add_new'            => __( 'Neu hinzufügen', 'guc-team' ),
+			'add_new_item'       => __( 'Neues Teammitglied hinzufügen', 'guc-team' ),
+			'edit_item'          => __( 'Teammitglied bearbeiten', 'guc-team' ),
+			'new_item'           => __( 'Neues Teammitglied', 'guc-team' ),
+			'search_items'       => __( 'Teammitglieder durchsuchen', 'guc-team' ),
+			'not_found'          => __( 'Keine Teammitglieder gefunden.', 'guc-team' ),
+			'not_found_in_trash' => __( 'Keine Teammitglieder im Papierkorb gefunden.', 'guc-team' ),
+			'menu_name'          => __( 'Teammitglieder', 'guc-team' ),
 		];
 
 		register_post_type( 'team_member', [
@@ -115,10 +115,18 @@ class GUC_Team_CPT {
 		if ( ! $screen || $screen->id !== 'edit-team_member' ) {
 			return;
 		}
+		$code_style = 'font-size:14px;background:#f0f0f1;padding:0.25rem 0.6rem;border-radius:3px;user-select:all;';
 		?>
-		<div class="notice notice-info" style="display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;">
-			<span><?php esc_html_e( 'Shortcode zum Einbinden des Team-Listings:', 'guc-team' ); ?></span>
-			<code style="font-size:14px;background:#f0f0f1;padding:0.25rem 0.6rem;border-radius:3px;user-select:all;">[team_members]</code>
+		<div class="notice notice-info" style="padding:0.75rem 1rem;">
+			<div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+				<span><?php esc_html_e( 'Shortcode zum Einbinden des Team-Listings:', 'guc-team' ); ?></span>
+				<code style="<?php echo esc_attr( $code_style ); ?>">[team_members]</code>
+			</div>
+			<div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:0.6rem;">
+				<span><?php esc_html_e( 'Nur eine oder mehrere Kategorien anzeigen (Slug der Kategorie):', 'guc-team' ); ?></span>
+				<code style="<?php echo esc_attr( $code_style ); ?>">[team_members category="slug"]</code>
+				<code style="<?php echo esc_attr( $code_style ); ?>">[team_members category="slug1,slug2"]</code>
+			</div>
 		</div>
 		<?php
 	}

@@ -256,6 +256,10 @@
   font-size: 13px;
 }
 
+.guc-shortcode-hint code {
+  white-space: nowrap;
+}
+
 .guc-copy-feedback--success {
   color: #2e7d32;
 }

@@ -12,23 +12,37 @@ class GUC_Team_Shortcode {
 	/**
 	 * [team_members] shortcode.
 	 *
-	 * @param array $atts  Shortcode attributes (reserved for future use).
+	 * @param array $atts  Shortcode attributes:
+	 *                     category – optional, slug(s) of team categories, comma-separated.
+	 *                     Example: [team_members category="vorstand"]
+	 *                              [team_members category="vorstand,beirat"]
 	 */
 	public static function render( $atts ) {
 		self::enqueue_assets();
 
-		// Fetch all published members.
-		$all_ids = get_posts( [
+		$atts = shortcode_atts( [ 'category' => '' ], $atts, 'team_members' );
+		$only = array_values( array_filter( array_map( 'sanitize_title', explode( ',', (string) $atts['category'] ) ) ) );
+
+		// Fetch all published members (optionally limited to the given categories).
+		$query_args = [
 			'post_type'      => 'team_member',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
 			'fields'         => 'ids',
 			'orderby'        => 'title',
 			'order'          => 'ASC',
-		] );
+		];
+		if ( $only ) {
+			$query_args['tax_query'] = [ [
+				'taxonomy' => 'team_category',
+				'field'    => 'slug',
+				'terms'    => $only,
+			] ];
+		}
+		$all_ids = get_posts( $query_args );
 
 		if ( empty( $all_ids ) ) {
-			return '<p class="guc-team-empty">' . esc_html__( 'No team members found.', 'guc-team' ) . '</p>';
+			return '<p class="guc-team-empty">' . esc_html__( 'Keine Teammitglieder gefunden.', 'guc-team' ) . '</p>';
 		}
 
 		// Build full member data array (used for JSON + template).
@@ -71,24 +85,35 @@ class GUC_Team_Shortcode {
 		}
 
 		// Fetch categories.
-		$terms = get_terms( [
+		$term_args = [
 			'taxonomy'   => 'team_category',
 			'hide_empty' => true,
-		] );
+		];
+		if ( $only ) {
+			$term_args['slug'] = $only;
+		}
+		$terms = get_terms( $term_args );
 
 		// Build groups with sorted IDs.
 		$groups = [];
 
-		// "All" group.
-		$all_sorted = GUC_Team_Admin_Sorting::sort_members( 'all', $all_ids );
-		$groups[]   = [
-			'slug'    => 'all',
-			'label'   => GUC_Team_Settings::get_filter_all_label(),
-			'members' => $all_sorted,
-		];
+		// "All" group (skipped when exactly one category is requested:
+		// then only that category is shown, with its own sort order).
+		if ( count( $only ) !== 1 ) {
+			$all_sorted = GUC_Team_Admin_Sorting::sort_members( 'all', $all_ids );
+			$groups[]   = [
+				'slug'    => 'all',
+				'label'   => GUC_Team_Settings::get_filter_all_label(),
+				'members' => $all_sorted,
+			];
+		}
 
 		if ( ! is_wp_error( $terms ) ) {
 			foreach ( $terms as $term ) {
+				// Hidden categories only appear when requested explicitly via category="...".
+				if ( ! $only && GUC_Team_Taxonomy::is_hidden( $term->term_id ) ) {
+					continue;
+				}
 				$term_members = get_objects_in_term( $term->term_id, 'team_category' );
 				$term_members = array_map( 'intval', (array) $term_members );
 				$term_members = array_values( array_intersect( $term_members, $all_ids ) );
@@ -107,12 +132,12 @@ class GUC_Team_Shortcode {
 			'members' => array_values( $members_data ),
 			'groups'  => $groups,
 			'i18n'    => [
-				'close'    => __( 'Close', 'guc-team' ),
-				'phone'    => __( 'Phone', 'guc-team' ),
-				'email'    => __( 'Email', 'guc-team' ),
-				'prev'     => __( 'Previous', 'guc-team' ),
-				'next'     => __( 'Next', 'guc-team' ),
-				'noPhoto'  => __( 'No photo available', 'guc-team' ),
+				'close'    => __( 'Schliessen', 'guc-team' ),
+				'phone'    => __( 'Telefon', 'guc-team' ),
+				'email'    => __( 'E-Mail', 'guc-team' ),
+				'prev'     => __( 'Zurück', 'guc-team' ),
+				'next'     => __( 'Weiter', 'guc-team' ),
+				'noPhoto'  => __( 'Kein Foto vorhanden', 'guc-team' ),
 			],
 		];
 
@@ -155,17 +180,17 @@ class GUC_Team_Shortcode {
 
 	public static function render_modal_html() {
 		?>
-		<div class="guc-team-modal" id="guc-team-modal" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Team member details', 'guc-team' ); ?>" hidden>
+		<div class="guc-team-modal" id="guc-team-modal" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Details zum Teammitglied', 'guc-team' ); ?>" hidden>
 			<div class="guc-team-modal__backdrop"></div>
 			<div class="guc-team-modal__container">
 
-				<button class="guc-team-modal__close" aria-label="<?php esc_attr_e( 'Close', 'guc-team' ); ?>">
+				<button class="guc-team-modal__close" aria-label="<?php esc_attr_e( 'Schliessen', 'guc-team' ); ?>">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
 						<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/>
 					</svg>
 				</button>
 
-				<button class="guc-team-modal__nav guc-team-modal__nav--prev" aria-label="<?php esc_attr_e( 'Previous member', 'guc-team' ); ?>">
+				<button class="guc-team-modal__nav guc-team-modal__nav--prev" aria-label="<?php esc_attr_e( 'Vorheriges Teammitglied', 'guc-team' ); ?>">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
 						<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/>
 					</svg>
@@ -196,7 +221,7 @@ class GUC_Team_Shortcode {
 					</div>
 				</div>
 
-				<button class="guc-team-modal__nav guc-team-modal__nav--next" aria-label="<?php esc_attr_e( 'Next member', 'guc-team' ); ?>">
+				<button class="guc-team-modal__nav guc-team-modal__nav--next" aria-label="<?php esc_attr_e( 'Nächstes Teammitglied', 'guc-team' ); ?>">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
 						<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6"/>
 					</svg>
